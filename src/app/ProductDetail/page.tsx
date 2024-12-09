@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image"
-import Pink from "@/assets/Frame (5).png"
-import shoppingcart from "@/assets/Buy 2.png"
+import Pink from "@/app/Assets/Frame (5).png"
+import shoppingcart from "@/app/Assets/Buy 2.png"
 import Link from "next/link"
 
 const ProductDetail = () => {

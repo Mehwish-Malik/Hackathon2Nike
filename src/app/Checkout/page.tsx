@@ -1,10 +1,10 @@
 import React from 'react';
 import Image from "next/image";
-import deleverIcon from "@/assets/Frame (36).png";
+import deleverIcon from "@/app/Assets/Frame (36).png";
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri"
-import Frame from "@/assets/Frame (34).png"
-import bluekshoes from "@/assets/Frame (35).png";
+import Frame from "@/app/Assets/Frame (34).png"
+import bluekshoes from "@/app/Assets/Frame (35).png";
 
 const Checkout = () => {
   return (

@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from "next/image"
 import Link from "next/link"
-import Frame from "@/assets/Frame (34).png"
+import Frame from "@/app/assets/Frame (34).png"
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 const Cart = () => {
@@ -63,12 +63,6 @@ const Cart = () => {
           </div>
 
         </div>
-
-
-
-
-        
-
         {/* Right Section */}
         <div className="w-full max-w-[300px] text-[#111111]">
 
