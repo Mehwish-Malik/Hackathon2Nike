@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { IoIosArrowUp } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { FiFilter } from "react-icons/fi";
+
 import Image from "next/image";
 import Hide from "@/app/Assets/hide.png"
 import White from "@/app/Assets/Frame (4).png"
@@ -20,7 +20,7 @@ import Purple from "@/app/Assets/Frame (15).png"
 import Litgren from "@/app/Assets/Frame (16).png"
 import Man from "@/app/Assets/Frame (17).png"
 
-import Wshirt from "@/app/Assets/Frame (14).png"
+
 import Multi from "@/app/Assets/Frame (18).png"
 import Fulwhite from "@/app/Assets/Frame (19).png"
 import DBshirt from "@/app/Assets/Frame (20).png"
@@ -36,7 +36,7 @@ import Kids from "@/app/Assets/Frame (29).png"
 import Short from "@/app/Assets/Frame (30).png"
 import Skyblue from "@/app/Assets/Frame (31).png"
 import Cgreen from "@/app/Assets/Frame (32).png"
-import Bar from "@/app/Assets/Rectangle.png"
+
 export default function Featured() {
   return (
     <main className="my-20 max-w-[1300px] mx-auto flex flex-col lg:flex-row gap-4 lg:gap-20 font-[Helvetica Neue]">
