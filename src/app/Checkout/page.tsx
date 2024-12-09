@@ -17,7 +17,7 @@ const Checkout = () => {
         <div className="w-full max-w-[450px] text-[#111111] lg:flex-[0.65]">
           <h1 className="text-[18px] font-[600]">How would you like to get your order?</h1>
           <p className="text-[15px] font-[400] mt-2 text-[#757575]">
-            Customs regulation for India require a copy of the recipient's KYC. The address on the KYC needs to match the shipping address. Our courier will contact you via SMS/email to obtain a copy of your KYC. The KYC will be stored securely and used solely for the purpose of clearing customs (including sharing it with customs officials) for all orders and returns. If your KYC does not match your shipping address, please click the link for more information. Learn More
+            Customs regulation for India require a copy of the recipient&apos;s KYC. The address on the KYC needs to match the shipping address. Our courier will contact you via SMS/email to obtain a copy of your KYC. The KYC will be stored securely and used solely for the purpose of clearing customs (including sharing it with customs officials) for all orders and returns. If your KYC does not match your shipping address, please click the link for more information. Learn More
           </p>
 
           {/* Delivery Option */}
@@ -109,7 +109,7 @@ const Checkout = () => {
               </div>
             </div>
 
-            <h1>What's your contact information?</h1>
+            <h1>What&apos;s your contact information?</h1>
             <input
               type="email"
               id="email"
@@ -128,7 +128,7 @@ const Checkout = () => {
             <p className="text-[#757575]">A carrier might contact you to confirm delivery.</p>
           </div>
 
-          <h1 className="text-[16px] text-[600] mt-[10px]">What's your PaN?</h1>
+          <h1 className="text-[16px] text-[600] mt-[10px]">What&apos;s your PaN?</h1>
           <input
               type="text"
               id="PAN"
@@ -203,7 +203,7 @@ const Checkout = () => {
                 <h3 className="text-[18px] font-[700] pt-[40px]">Nike Dri-FIT ADV TechKnit Ultra</h3>
                 <p className="text-[16px] font-[600] pt-[40px]">MRP: ₹ 3 895.00</p>
               </div>
-              <p className="text-[15px] mt-1 text-[#757575]">Men's Short-Sleeve Running Top <br /> Ashen Slate/Cobalt Bliss</p>
+              <p className="text-[15px] mt-1 text-[#757575]">Men&apos;s Short-Sleeve Running Top <br /> Ashen Slate/Cobalt Bliss</p>
               <p className="text-[15px] mt-1 text-[#757575]"><span>Size L</span> <span>Quantity 1</span></p>
 
               {/* Heart and Delete Icons */}
@@ -222,7 +222,7 @@ const Checkout = () => {
                 <h3 className="text-[18px] font-[700]">Nike Dri-FIT ADV TechKnit Ultra</h3>
                 <p className="text-[16px] font-[600]">MRP: ₹ 3 895.00</p>
               </div>
-              <p className="text-[15px] mt-1 text-[#757575]">Men's Short-Sleeve Running Top <br /> Ashen Slate/Cobalt Bliss</p>
+              <p className="text-[15px] mt-1 text-[#757575]">Men&apos;s Short-Sleeve Running Top <br /> Ashen Slate/Cobalt Bliss</p>
               <p className="text-[15px] mt-1 text-[#757575]"><span>Size L</span> <span>Quantity 1</span></p>
 
               {/* Heart and Delete Icons */}

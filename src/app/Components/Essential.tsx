@@ -51,12 +51,12 @@ const Essential = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-sm font-semibold mb-4  text-black">Kids'</h3>
+          <h3 className="text-sm font-semibold mb-4  text-black">Kid&apos;s</h3>
           <ul className="space-y-2 text-sm text-[#757575]">
             <li><>Infant & Toddler Shoes</></li>
-            <li><>Kids' Shoes</></li>
-            <li><>Kids' Jordan Shoes</></li>
-            <li><>Kids' Basketball Shoes</></li>
+            <li><>Kid&apos;s Shoes</></li>
+            <li><>Kid&apos;s Jordan Shoes</></li>
+            <li><>Kid&apos;s Basketball Shoes</></li>
           </ul>
         </div>
 

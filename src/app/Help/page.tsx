@@ -142,7 +142,7 @@ const Help = () => {
           </div>
           <div className="my-10">
             <Image src={Email} alt="Email" className="mx-auto" />
-            <p>We'll reply within 7 days</p>
+            <p>&apos;We&lsquo;ll reply within 7 days</p>
           </div>
           <div className="my-10">
             <Image src={Location} alt="Location" className="mx-auto" />

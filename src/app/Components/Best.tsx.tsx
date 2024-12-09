@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Right from '@/app/Assets/Right.png'
 import Left from "@/app/Assets/Left.png"
 import Shoes from "@/app/Assets/Shoes.png"
-import Run from "@/app/Assets/Run.png"
+
 const Best = () => {
     return (
             <div className="bg-white font-['Helvetica Neue'] w-full h-screen relative ">

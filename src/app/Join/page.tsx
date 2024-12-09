@@ -58,7 +58,7 @@ export default function JoinUs() {
                     </Link>
                     <p className="text-[#BCBCBC] text-[12px]">
                         Already a Member?{" "}
-                        <Link href="/login">
+                        <Link href="/Login">
                             <u className="text-black">Sign In</u>
                         </Link>
                     </p>
