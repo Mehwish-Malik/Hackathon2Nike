@@ -4,8 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Logo from "@/app/Assets/Logo.png"
 import { useState } from 'react'
-import Navbar from '../Components/Navbar';
-import Footer from '../Components/Footer';
+
 export default function LoginForm() {
  
   const [isChecked, setIsChecked] = useState(false);
@@ -110,4 +109,4 @@ export default function LoginForm() {
     </div>
   );
 }
- LoginForm;
+ 

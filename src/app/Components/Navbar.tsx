@@ -8,7 +8,6 @@ import { FaRegHeart } from "react-icons/fa";
 import Bag from "@/app/Assets/bag.png"
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import Logo from "@/app/Assets/Logo.png"
 const Navbar = () => {
   return (
 <div>
