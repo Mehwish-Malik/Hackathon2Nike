@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from "next/image"
 import Link from "next/link"
-import Frame from "@/app/assets/Frame (34).png"
+import Frame from "@/app/Assets/Frame (34).png"
 import { FaRegHeart } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 const Cart = () => {
