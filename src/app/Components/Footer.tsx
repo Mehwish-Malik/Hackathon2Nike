@@ -73,6 +73,7 @@ const Footer = () => {
           <Link href="#" className="hover:underline">Nike Privacy Policy</Link>
         </div>
       </div>
+      
     </div>
   );
 };

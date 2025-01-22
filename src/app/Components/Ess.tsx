@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Boy from "@/app/Assets/Boy.png"
+import Link from 'next/link';
+
 const Ess = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-10 flex justify-between items-center">
@@ -27,10 +29,12 @@ const Ess = () => {
   </p>
   
   {/* Button Section */}
+  
   <div className="mt-8 flex justify-center">
+    <Link href="/NewProducts">
     <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
       <span className="text-sm md:text-base font-medium">Shop</span>
-    </button>
+    </button></Link>
   </div></div>
 </div>
                   </div>

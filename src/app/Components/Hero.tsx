@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Heroimg from "@/app/Assets/Hero1.png"
+import Heroimg from "@/app/Assets/Hero1.png";
 
 const Hero = () => {
   return (
@@ -19,11 +19,11 @@ const Hero = () => {
       </div>
 
       {/* Hero Image */}
-      <div className="px-10 relative">
+      <div className="relative px-4 sm:px-6 md:px-10">
         <Image
           src={Heroimg}
           alt="Hero Image"
-          className="w-full object-cover h-[400px] md:h-[500px]"
+          className="w-full object-cover h-[300px] sm:h-[400px] md:h-[500px] hover:scale-105 transition-transform duration-300"
           priority
         />
       </div>
@@ -33,27 +33,24 @@ const Hero = () => {
         <div className="text-gray-800 text-sm font-medium">
           First Look
         </div>
-        <div className="mt-4 text-4xl md:text-7xl font-bold text-gray-900">
+        <div className="mt-4 text-3xl sm:text-4xl md:text-7xl font-bold text-gray-900">
           Nike Air Max Pulse
         </div>
         <div className="mt-4 text-black text-base leading-6">
-          Extreme comfort. Hyper durable. Max volume. Introducing the Air Max Pulse <br />—
-          designed to push you past your limits and help you go to the max.
+          Extreme comfort. Hyper durable. Max volume. Introducing the Air Max Pulse <br />— designed to push you past your limits and help you go to the max.
         </div>
       </div>
-      <div className="mt-8 flex justify-center gap-4">
-  <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
-    <span className="text-base font-medium">Notify Me</span>
-  </button>
-  <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
-    <span className="text-base font-medium">Shop Air Max</span>
-  </button>
-</div>
 
-</div>
-
-      
-     
+      {/* Buttons Section */}
+      <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
+          <span className="text-base font-medium">Notify Me</span>
+        </button>
+        <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
+          <span className="text-base font-medium">Shop Air Max</span>
+        </button>
+      </div>
+    </div>
   );
 };
 

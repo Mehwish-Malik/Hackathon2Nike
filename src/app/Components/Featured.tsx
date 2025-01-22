@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Run from "@/app/Assets/Run.png"
+import Link from 'next/link';
 const Featured = () => {
   return (
     <div>
@@ -28,9 +29,10 @@ const Featured = () => {
   
   {/* Button Section */}
   <div className="mt-8 flex justify-center">
+    <Link href= "/NewProducts">
     <button className="flex items-center gap-2 py-3 px-6 rounded-[24px] bg-black text-white hover:bg-gray-800">
       <span className="text-sm md:text-base font-medium">Find Your Shoe</span>
-    </button>
+    </button></Link>
   </div>
 </div>
 </div></div>

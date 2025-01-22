@@ -1,110 +1,134 @@
+"use client";
 
-//Cart component
-import React from 'react'
-import Image from "next/image"
-import Link from "next/link"
-import Frame from "@/app/Assets/Frame (34).png"
-import { FaRegHeart } from "react-icons/fa6";
-import { RiDeleteBin6Line } from "react-icons/ri";
-const Cart = () => {
+import { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image"; // Assuming this is where the image URL is handled
+import Link from "next/link";
+import IProducts from "@/types/type";
+
+const CartPage = () => {
+  const [cart, setCart] = useState<IProducts[]>([]);
+
+  useEffect(() => {
+    // Load cart data from localStorage when component mounts
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Increase quantity of an item
+  const increaseQuantity = (index: number) => {
+    const updatedCart = [...cart];
+    if (updatedCart[index].quantity && !isNaN(updatedCart[index].quantity)) {
+      updatedCart[index].quantity += 1;
+    } else {
+      updatedCart[index].quantity = 1; // Ensure the quantity is a valid number
+    }
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Decrease quantity of an item
+  const decreaseQuantity = (index: number) => {
+    const updatedCart = [...cart];
+    if (updatedCart[index].quantity > 1) {
+      updatedCart[index].quantity -= 1;
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
+
+  // Remove item from the cart
+  const removeItem = (index: number) => {
+    const updatedCart = cart.filter((_, i) => i !== index);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    toast.success("Item removed from cart", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
-    <div className="w-full h-auto bg-[#ffffff] py-10 px-4">
+    <div className="max-w-7xl mx-auto px-4 py-10">
+      <ToastContainer />
+      <h2 className="text-3xl font-bold text-center mb-6">Your Cart</h2>
+      {cart.length > 0 ? (
+        <div className="space-y-6">
+          <ul className="space-y-4">
+            {cart.map((product, index) => (
+              <li
+                key={index}
+                className="flex justify-between items-center bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-center space-x-6">
+                  <Image
+                    src={urlFor(product.image).url()}
+                    alt={product.productName}
+                    width={120}
+                    height={120}
+                    className="rounded-lg"
+                  />
+                  <div>
+                    <h3 className="text-xl font-semibold">{product.productName}</h3>
+                    <p className="text-gray-700">{product.price.toFixed(2)} INR</p>
+                  </div>
+                </div>
 
-      {/* Main Flex Container */}
-      <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-16 items-center lg:items-start">
+                <div className="flex items-center space-x-4">
+                  {/* Quantity Controls */}
+                  <button
+                    onClick={() => decreaseQuantity(index)}
+                    className="bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+                  >
+                    -
+                  </button>
+                  <span className="text-lg">{product.quantity}</span>
+                  <button
+                    onClick={() => increaseQuantity(index)}
+                    className="bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400 transition-colors"
+                  >
+                    +
+                  </button>
+                </div>
 
-        {/* Left Section */}
-        <div className="w-full max-w-[750px] text-[#111111]">
+                <div className="text-right">
+                  <button
+                    onClick={() => removeItem(index)}
+                    className="bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition-colors"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-          {/* Free Delivery Info */}
-          <div className="bg-[#E5E5E5] rounded-lg p-[12px] p mb-6">
-            <h1 className="text-[18px] font-[600]">Free Delivery</h1>
-            <h2 className="text-[14px] font-[400] mt-2">Applies to orders of ₹ 14,000.00 or more. <Link href="/ProductDetail" className="font-[700] underline mt-4 inline-block">View Details</Link></h2>
-           
+          <div className="mt-8 flex justify-between items-center">
+            <h3 className="text-2xl font-bold">
+              Total: ₹{cart.reduce((total, product) => total + product.price * (product.quantity || 1), 0).toFixed(2)}
+            </h3>
+            <Link href ="/Checkout">
+            <button className="bg-black text-white p-4 rounded-lg hover:bg-slate-500 transition-colors">
+              Checkout
+            </button></Link>
           </div>
-
-          {/* Bag Section */}
-          <h2 className="text-[20px] font-semibold mb-4">Bag</h2>
-         
-          {/* Product Item */}
-          <div className=" flex flex-col lg:flex-row gap-4 items-center mb-6 lg:mb-6">
-            <Image src={Frame} alt="Product" className="object-cover h-[180px] w-[180px]"/>
-            <div>
-                <div className="flex justify-between">
-              <h3 className="text-[18px] font-[700]">Nike Dri-FIT ADV TechKnit Ultra</h3>
-              <p className="text-[16px] font-[600]">MRP: ₹ 3 895.00</p></div>
-              <p className="text-[15px] mt-1 text-[#757575]">Men&apos;s Short-Sleeve Running Top <br /> Ashen Slate/Cobalt Bliss</p>
-              <p className="text-[15px] mt-1 text-[#757575]"><span>Size L</span> <span>Quantity 1</span></p>
-
-              {/* Heart and Delete Icons */}
-              <div className="flex gap-4 mt-4 items-center">
-              <FaRegHeart />
-              <RiDeleteBin6Line />
-              </div>
-            </div>
-          </div>
-
-
-          <div className="mt-[100px] md:mt-[50px] md:ml-[190px]">
-       
-            <div>
-                <div className="flex justify-between ">
-              <h3 className="text-[18px] font-[700]">Nike Air Max 97 SE</h3>
-              <p className="text-[16px] font-[600]">MRP: ₹ 16 995.00</p></div>
-              <p className="text-[15px] mt-1 text-[#757575]">Men&apos;s Shoes <br /> Flat Pewter/Light Bone/Black/White</p>
-              <p className="text-[15px] mt-1 text-[#757575]"><span>Size 8</span> <span>Quantity 1</span></p>
-
-              {/* Heart and Delete Icons */}
-              <div className="flex gap-4 mt-4 items-center">
-              <FaRegHeart />
-              <RiDeleteBin6Line />
-              </div>deleteIcon
-            </div>
-          </div>
-
         </div>
-        {/* Right Section */}
-        <div className="w-full max-w-[300px] text-[#111111]">
-
-          {/* Summary Section */}
-          <h2 className="text-[20px] font-semibold mb-4">Summary</h2>
-
-          {/* Subtotal */}
-          <div className="flex justify-between text-[16px] font-[400] mb-4">
-            <p>Subtotal</p>
-            <p>₹ 20,890.00</p>
-          </div>
-
-          {/* Estimated Delivery & Handling */}
-          <div className="flex justify-between text-[16px] font-[400] mb-4">
-            <p>Estimated Delivery & Handling</p>
-            <p>Free</p>
-          </div>
-
-          {/* Horizontal Line */}
-          <div className="border-t border-gray-300 mb-4"></div>
-
-          {/* Total */}
-          <div className="flex justify-between text-[16px] font-[600] mb-4">
-            <p>Total</p>
-            <p>₹ 20,890.00</p>
-          </div>
-
-          {/* Horizontal Line */}
-          <div className="border-t border-gray-300 mb-6"></div>
-
-          {/* Checkout Button */}
-          <Link href="/Checkout"><div className="flex justify-center">
-            <button className="w-full py-3 bg-black text-white text-[18px] font-[500] rounded-[30px] hover:bg-gray-800 focus:outline-none">
-              Member Checkout
-            </button>
-          </div></Link>
-          
-        </div>
-
-      </div>
+      ) : (
+        <p className="text-center text-xl text-gray-500">Your Cart is empty. Please add your products.</p>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Cart;
+export default CartPage;
