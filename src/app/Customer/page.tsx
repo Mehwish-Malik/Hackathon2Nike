@@ -1,4 +1,3 @@
-// pages/thank-you.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image"; // Assuming this is where the image URL is handled
 import IProducts from "@/types/type";
+
 const ThankYouPage = () => {
   const [cart, setCart] = useState<IProducts[]>([]);
   const [orderNumber, setOrderNumber] = useState<string>("");
@@ -24,6 +24,12 @@ const ThankYouPage = () => {
     // Clear the cart after displaying the thank you page
     localStorage.removeItem("cart");
   }, []);
+
+  // Calculate total price
+  const totalPrice = cart.reduce((total, product) => {
+    const quantity = product.quantity || 1; // Ensure quantity defaults to 1 if undefined
+    return total + product.price * quantity;
+  }, 0).toFixed(2);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -53,7 +59,7 @@ const ThankYouPage = () => {
                 <div>
                   <h3 className="text-lg font-semibold">{product.productName}</h3>
                   <p className="text-gray-600">Quantity: {product.quantity}</p>
-                  <p className="text-gray-700">₹{(product.price * product.quantity).toFixed(2)}</p>
+                  <p className="text-gray-700">₹{(product.price * (product.quantity || 1)).toFixed(2)}</p>
                 </div>
               </div>
             </li>
@@ -61,7 +67,7 @@ const ThankYouPage = () => {
         </ul>
 
         <div className="mt-4 flex justify-between items-center">
-          <h3 className="text-xl font-bold">Total: ₹{cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}</h3>
+          <h3 className="text-xl font-bold">Total: ₹{totalPrice}</h3>
         </div>
       </div>
 

@@ -38,9 +38,12 @@ export const productSchema = {
       type: "slug",
       title: "Slug",
       options: {
-        source: "productName", // Generate slug from productName
+        source: "_id", // Generate slug from product_id
         maxLength: 96,        // Maximum slug length
       },},
+   
+
+  
   
       
       {

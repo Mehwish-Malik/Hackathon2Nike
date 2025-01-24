@@ -1,17 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import Image from "next/image";
 import Link from "next/link";
 import IProducts from "@/types/type";
+import { client } from "@/sanity/lib/client";
 
-const client = createClient({
-  projectId: "nx37aj9v",
-  dataset: "production",
-  useCdn: true,
-  apiVersion: "2025-01-18",
-});
 
 const builder = imageUrlBuilder(client);
 

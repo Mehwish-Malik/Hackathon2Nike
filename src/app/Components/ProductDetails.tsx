@@ -10,19 +10,57 @@ import { useRouter } from "next/navigation";
 
 function ProductDetails({ product }: { product: IProducts }) {
   const [cart, setCart] = useState<IProducts[]>([]);
+  const [wishlist, setWishlist] = useState<IProducts[]>([]);
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Load cart data from localStorage
       const savedCart = localStorage.getItem("cart");
       if (savedCart) {
-        setCart(JSON.parse(savedCart));
+        try {
+          const parsedCart = JSON.parse(savedCart);
+          if (Array.isArray(parsedCart)) {
+            setCart(parsedCart);
+          } else {
+            setCart([]);
+          }
+        } catch (error) {
+          console.error("Failed to parse cart data:", error);
+          setCart([]);
+        }
+      }
+
+      // Load wishlist data from localStorage
+      const savedWishlist = localStorage.getItem("wishlist");
+      if (savedWishlist) {
+        try {
+          const parsedWishlist = JSON.parse(savedWishlist);
+          if (Array.isArray(parsedWishlist)) {
+            setWishlist(parsedWishlist);
+          } else {
+            setWishlist([]);
+          }
+        } catch (error) {
+          console.error("Failed to parse wishlist data:", error);
+          setWishlist([]);
+        }
       }
     }
   }, []);
 
-  const addToCart = () => {
-    const updatedCart = [...cart, product];
+  const addToCart = (product: IProducts) => {
+    const existingProductIndex = cart.findIndex((item) => item.productName === product.productName);
+
+    let updatedCart: IProducts[];
+
+    if (existingProductIndex !== -1) {
+      updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity += 1;
+    } else {
+      updatedCart = [...cart, { ...product, quantity: 1 }];
+    }
+
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
@@ -37,10 +75,42 @@ function ProductDetails({ product }: { product: IProducts }) {
       theme: "light",
     });
 
-    // Navigate to the cart page after showing toast
     setTimeout(() => {
       router.push("/Cart");
-    }, 3000); // Matches the toast duration
+    }, 3000);
+  };
+
+  const addToWishlist = (product: IProducts) => {
+    const existingProductIndex = wishlist.findIndex((item) => item.productName === product.productName);
+
+    if (existingProductIndex !== -1) {
+      toast.info("This item is already in your wishlist!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+
+    const updatedWishlist = [...wishlist, product];
+    setWishlist(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+
+    toast.success(`${product.productName} added to wishlist!`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
@@ -77,11 +147,19 @@ function ProductDetails({ product }: { product: IProducts }) {
 
           {/* Add to Cart Button */}
           <button
-            onClick={addToCart}
-            className="bg-black px-6 py-2 rounded hover:bg-slate-600 text-white"
+            onClick={() => addToCart(product)}
+            className="bg-black px-6 py-2 rounded hover:bg-slate-600 text-white mb-4"
           >
             Add to Cart
           </button>
+<div>
+          {/* Add to Wishlist Button */}
+          <button
+            onClick={() => addToWishlist(product)}
+            className="bg-blue-500 px-6 py-2 rounded space-x-5 hover:bg-gray-600 text-white"
+          >
+            Add to Wishlist
+          </button></div>
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import ProductSearch from './Productsearch';
 
 const Navbar = () => {
   return (
@@ -64,14 +65,15 @@ const Navbar = () => {
 
           {/* Search Bar */}
           <div className="flex items-center space-x-4">
-            <div className="hidden lg:flex items-center bg-slate-100 rounded-full px-3 py-1">
-              <input
+            <ProductSearch />
+            {/* <div className="hidden lg:flex items-center bg-slate-100 rounded-full px-3 py-1"> */}
+              {/* <input
                 type="text"
                 placeholder="Search"
                 className="bg-transparent outline-none text-sm flex-grow pl-2"
-              />
-              <button>
-                <svg
+              /> */}
+              {/* <button> */}
+                {/* <svg
                   className="pl-2 block text-gray-400"
                   width="30"
                   height="30"
@@ -92,13 +94,13 @@ const Navbar = () => {
                     </clipPath>
                   </defs>
                 </svg>
-              </button>
-            </div>
-
-            <FaRegHeart className="text-black text-lg" />
-            <Link href="/Cart">
+            //   </button> */}
+           {/* </div> */}
+            <Link href="/Wishlist">
+            <FaRegHeart className="text-black text-lg" />  </Link>
+            
               <FiShoppingBag />
-            </Link>
+          
           </div>
 
           {/* Mobile Menu */}
