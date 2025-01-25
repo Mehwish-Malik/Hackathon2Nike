@@ -16,6 +16,7 @@ async function getProducts(slug: string): Promise<IProducts | null> {
       description,
       inventory,
       colors,
+      status,
       category,
       price,
       image,
