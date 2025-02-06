@@ -118,15 +118,16 @@ const CartPage = () => {
             <h3 className="text-2xl font-bold">
               Total: ₹{cart.reduce((total, product) => total + product.price * (product.quantity || 1), 0).toFixed(2)}
             </h3>
-            <Link href ="/Checkout">
+           <Link href ="/Checkout">
             <button className="bg-black text-white p-4 rounded-lg hover:bg-slate-500 transition-colors">
               Checkout
-            </button></Link>
+            </button> </Link>
           </div>
         </div>
       ) : (
         <p className="text-center text-xl text-gray-500">Your Cart is empty. Please add your products.</p>
       )}
+     
     </div>
   );
 };
